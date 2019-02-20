@@ -8,6 +8,7 @@ import android.widget.TextView;
 public class ShowJokesActivity extends AppCompatActivity {
 
     private String result = null;
+    public static final String JOKE = "why_did_the_chicken_cross_the_road";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,7 @@ public class ShowJokesActivity extends AppCompatActivity {
             // set the textview to the string
             punchline.setText(result);
         } else {
-            // fuck fuck fuck fuck fuck
-            punchline.setText("fuck!");
+            punchline.setText("GET OFF MY LAWN!");
         }
 
     }

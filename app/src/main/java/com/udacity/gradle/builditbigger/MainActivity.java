@@ -44,12 +44,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Jester jester = new Jester();
-
-        // intent to launch the jesterfactory
-        Intent intent = new Intent(this, ShowJokesActivity.class);
-        intent.putExtra(getString(R.string.jokeEnvelope), jester.entertainMeJester());
-        startActivity(intent);
+//        Jester jester = new Jester();
+//
+//        // intent to launch the jesterfactory
+//        Intent intent = new Intent(this, ShowJokesActivity.class);
+//        intent.putExtra(getString(R.string.jokeEnvelope), jester.entertainMeJester());
+//        startActivity(intent);
+        new EndpointAsyncTask().execute(this);
     }
 
 

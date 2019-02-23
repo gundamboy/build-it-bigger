@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -7,8 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.charlesrowland.ragingclaw.javajester.Jester;
+import com.charlesrowland.ragingclaw.jesterfactory.ShowJokesActivity;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements JesterTaskListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+//        Jester jester = new Jester();
+//
+//        // intent to launch the jesterfactory
+//        Intent intent = new Intent(this, ShowJokesActivity.class);
+//        intent.putExtra(getString(R.string.jokeEnvelope), jester.entertainMeJester());
+//        startActivity(intent);
+        new EndpointAsyncTask().execute(this);
     }
 
 
+    @Override
+    public void onComplete(String result) {
+        Intent intent = new Intent(this, ShowJokesActivity.class);
+        intent.putExtra(getString(R.string.jokeEnvelope), result);
+        this.startActivity(intent);
+    }
 }

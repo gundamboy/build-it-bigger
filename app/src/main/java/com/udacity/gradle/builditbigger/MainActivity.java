@@ -12,7 +12,7 @@ import com.charlesrowland.ragingclaw.javajester.Jester;
 import com.charlesrowland.ragingclaw.jesterfactory.ShowJokesActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JesterTaskListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,4 +54,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onComplete(String result) {
+        Intent intent = new Intent(this, ShowJokesActivity.class);
+        intent.putExtra(getString(R.string.jokeEnvelope), result);
+        this.startActivity(intent);
+    }
 }

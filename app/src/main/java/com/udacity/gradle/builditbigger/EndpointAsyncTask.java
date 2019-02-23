@@ -14,12 +14,12 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
+public class EndpointAsyncTask extends AsyncTask<JesterTaskListener, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private JesterTaskListener mJesterListener = null;
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected String doInBackground(JesterTaskListener... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -36,7 +36,7 @@ public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
             myApiService = builder.build();
         }
 
-        context = params[0];
+        mJesterListener = params[0];
 
         try {
             return myApiService.tellJoke().execute().getData();
@@ -45,11 +45,25 @@ public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
         }
     }
 
+
     @Override
     protected void onPostExecute(String result) {
 //        Intent intent = new Intent(context, ShowJokesActivity.class);
 //        intent.putExtra(ShowJokesActivity.JOKE,result);
 //        context.startActivity(intent);
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+
+        if(this.mJesterListener != null) {
+            this.mJesterListener.onComplete(result);
+        }
+    }
+
+    @Override
+    protected void onCancelled() {
+        if (this.mJesterListener != null) {
+            this.mJesterListener.onComplete(null);
+        }
+
+        super.onCancelled();
     }
 }

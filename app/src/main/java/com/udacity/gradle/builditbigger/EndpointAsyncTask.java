@@ -33,8 +33,6 @@ public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
-
             myApiService = builder.build();
         }
 
@@ -49,8 +47,9 @@ public class EndpointAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(context, ShowJokesActivity.class);
-        intent.putExtra(ShowJokesActivity.JOKE,result);
-        context.startActivity(intent);
+//        Intent intent = new Intent(context, ShowJokesActivity.class);
+//        intent.putExtra(ShowJokesActivity.JOKE,result);
+//        context.startActivity(intent);
+        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }

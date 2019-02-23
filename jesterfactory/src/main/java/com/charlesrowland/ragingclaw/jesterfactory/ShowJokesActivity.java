@@ -24,7 +24,7 @@ public class ShowJokesActivity extends AppCompatActivity {
             // set the textview to the string
             punchline.setText(result);
         } else {
-            punchline.setText("GET OFF MY LAWN!");
+            punchline.setText(R.string.get_off_my_lawn);
         }
 
     }

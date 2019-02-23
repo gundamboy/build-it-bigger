@@ -5,6 +5,7 @@ import java.util.Random;
 public class Jester {
     public String entertainMeJester() {
 
+        // look at all these funny jokes!
         String jokes[] = {
                 "Android: where ProgressBars go around in circles and Spinners don’t spin",
                 "Documentation is like sex. When it's good, it's very good. When it's bad, it's better than nothing.",

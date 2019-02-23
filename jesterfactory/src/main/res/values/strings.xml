@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">JesterFactory</string>
     <string name="jokeEnvelope">jokeEnvelope</string>
+    <string name="get_off_my_lawn">GET OFF MY LAWN!</string>
 </resources>

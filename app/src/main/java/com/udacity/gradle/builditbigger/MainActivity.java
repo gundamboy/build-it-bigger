@@ -44,12 +44,9 @@ public class MainActivity extends AppCompatActivity implements JesterTaskListene
     }
 
     public void tellJoke(View view) {
-//        Jester jester = new Jester();
-//
-//        // intent to launch the jesterfactory
-//        Intent intent = new Intent(this, ShowJokesActivity.class);
-//        intent.putExtra(getString(R.string.jokeEnvelope), jester.entertainMeJester());
-//        startActivity(intent);
+        // I know I should check for a network connection first, but its not
+        // really a requirement of the app and I hate this app and want it to
+        // die anyway.
         new EndpointAsyncTask().execute(this);
     }
 

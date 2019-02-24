@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.charlesrowland.ragingclaw.jesterfactory.ShowJokesActivity;
@@ -41,7 +42,9 @@ public class EndpointAsyncTask extends AsyncTask<JesterTaskListener, Void, Strin
         try {
             return myApiService.tellJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            // return null so unit tests do not pass even if there is an error
+            Log.e("Jokes", e.getMessage(), e);
+            return null;
         }
     }
 
